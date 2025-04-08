@@ -1,0 +1,276 @@
+@import url('https://fonts.googleapis.com/css2?family=Iceland&family=Poppins:wght@400;600&display=swap');
+
+/* Carousel Slide Container */
+.carousel-slide {
+  height: 420px;
+  width: 90%;
+  margin: 20px auto 0 auto; /* top margin and centered horizontally */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: white;
+  padding: 20px;
+  position: relative;
+ 
+}
+
+/* Typography */
+strong {
+  color: white;
+  text-transform: uppercase;
+  letter-spacing: 0.1rem;
+  font-family: "Iceland", sans-serif;
+}
+
+/* Slides Backgrounds */
+.hero-slide {
+  background: linear-gradient(135deg, #0f0f0f, #444444);
+  transition: background 0.5s ease;
+}
+
+.web-dev-slide,
+.data-science-slide {
+  width: 90%;
+  height:450px;
+  margin: auto;
+  padding: 40px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  transition: all 0.5s ease;
+
+}
+
+.hero-slide {
+  background: url('/International-Jobs-Career-Coaching.jpg');
+}
+.web-dev-slide {
+  background: url('/316ce2f8-6204-4df3-ba14-8acf2a6d53b6.jpg') center/cover no-repeat;
+}
+
+.data-science-slide {
+  background: url('/hhhh.jpg') center/cover no-repeat;
+}
+
+/* Text Boxes & Content */
+.text-box {
+  background: rgba(0, 0, 0, 0.8);
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 10px 10px 25px rgba(0, 0, 0, 0.9);
+  max-width: 400px;
+  transition: all 0.3s ease;
+}
+
+.text-box:hover {
+  box-shadow: 15px 15px 30px rgba(0, 0, 0, 1);
+}
+
+
+.hero-content {
+  background-color: rgba(0, 0, 0, 0.9);
+  color: white;
+  padding: 20px;
+
+  
+}
+
+
+
+.hero-title {
+  font-size: 3rem;
+  margin-bottom: 10px;
+  color: #ffd700;
+}
+
+.hero-subtitle {
+  font-size: 1.3rem;
+  color: #cccccc;
+  margin-bottom: 20px;
+}
+
+/* CTA Button */
+.cta-button {
+  padding: 10px 20px;
+  background: #1e6afc;
+ 
+  color: white;
+  border: none;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.cta-button:hover {
+  background-color: #5a0fc8;
+}
+
+.hero-slide-content{
+  margin-right: 20px;
+  background-color: rgba(203, 192, 192, 0.7);
+  font-family: "Iceland", sans-serif;
+  text-transform: uppercase;
+  font-size: 30px;
+  padding: 20px;
+  align-self: flex-end;
+  box-shadow: -15px -18px 4px rgba(37, 36, 36, 0.8);
+
+}
+.hero-slide-content .hero-title{
+  color: #000 !important;
+  font-weight: 800;
+  font-size: 50px;
+
+}
+/* Carousel Control Buttons */
+.slick-prev,
+.slick-next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: black !important; /* permanent black background */
+  border-radius: 50%;
+  z-index: 2;
+  padding: 10px;
+  cursor: pointer;
+}
+
+/* Position on large screens */
+.slick-prev {
+  left: 80px;
+}
+.slick-next {
+  right: 80px;
+}
+
+/* White arrow icons using pseudo-elements with explicit content */
+.slick-prev:before,
+.slick-next:before {
+  font-size: 18px;
+  color: white;
+  line-height: 1;
+}
+
+/* Explicit arrow content */
+.slick-prev:before {
+  content: '←';
+}
+.slick-next:before {
+  content: '→';
+}
+
+/* Alternate control classes (if using another library) */
+.carousel .control-prev.control-arrow {
+  left: 80px;
+}
+.carousel .control-next.control-arrow {
+  right: 80px;
+}
+
+/* Scrollbar Styling (if used in course-strip or similar element) */
+.course-strip::-webkit-scrollbar {
+  height: 6px;
+}
+.course-strip::-webkit-scrollbar-thumb {
+  background-color: #000; 
+  border-radius: 0;
+}
+.course-strip::-webkit-scrollbar-thumb:hover {
+  background-color: #555;
+}
+.course-strip::-webkit-scrollbar-track {
+  background-color: #f0f0f0;
+}
+
+/* Media Queries for Responsiveness */
+@media (max-width: 1024px) {
+  .carousel-slide {
+    height: 400px;
+    padding: 15px;
+  }
+  .hero-title {
+    font-size: 2.5rem;
+  }
+  .slick-prev,
+  .slick-next {
+    padding: 8px;
+  }
+  .web-dev-slide,
+  .data-science-slide {
+    padding: 30px;
+  }
+}
+
+@media (max-width: 720px) {
+  .carousel-slide {
+    height: 350px;
+  }
+  .hero-title {
+    font-size: 1.8rem;
+  }
+  .web-dev-slide,
+  .data-science-slide {
+    padding: 20px;
+    justify-content: center;
+    text-align: center;
+    background-position: center;
+  }
+  /* Move controls closer to edges */
+  .slick-prev,
+  .slick-next {
+    padding: 6px;
+    left: 20px;
+    right: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .carousel-slide {
+    height: 300px;
+  }
+  .hero-title {
+    font-size: 1.4rem;
+  }
+  .hero-subtitle {
+    font-size: 1rem;
+  }
+  .web-dev-slide,
+  .data-science-slide {
+    padding: 15px;
+    justify-content: center;
+    text-align: center;
+    background-position: center;
+  }
+  .slick-prev,
+  .slick-next {
+    padding: 5px;
+    left: 15px;
+    right: 15px;
+  }
+}
+
+@media (max-width: 300px) {
+  .carousel-slide {
+    height: 250px;
+  }
+  .hero-title {
+    font-size: 1.2rem;
+  }
+  .text-box {
+    padding: 10px;
+  }
+  .web-dev-slide,
+  .data-science-slide {
+    padding: 10px;
+    justify-content: center;
+    text-align: center;
+    background-position: center;
+  }
+  .slick-prev,
+  .slick-next {
+    padding: 4px;
+    left: 10px;
+    right: 10px;
+  }
+}

@@ -1,0 +1,72 @@
+.update-profile-container {
+  width: 100%;
+  max-width: 700px;
+  margin: 30px auto;
+  padding: 20px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+  background: #f9f9f9;
+  text-align: center;
+}
+
+.update-profile-title {
+  margin-bottom: 20px;
+  font-size: 28px;
+  font-weight: bold;
+  color: #333;
+}
+
+.update-profile-error {
+  color: red;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.update-profile-form .form-group {
+  margin-bottom: 20px;
+  text-align: left;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+  color: #444;
+}
+
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  outline: none;
+}
+
+.form-group textarea {
+  resize: none;
+  height: 100px;
+}
+
+.profile-pic-preview img {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 20px;
+  border: 2px solid #333;
+}
+
+.update-profile-btn button {
+  width: 100%;
+  padding: 10px;
+  background: #007bff;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.update-profile-btn button:disabled {
+  background: #aaa;
+}

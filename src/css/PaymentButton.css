@@ -1,0 +1,29 @@
+.payment-button {
+    background: #3399cc; /* Razorpay Blue */
+    color: white;
+    padding: 12px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.3s ease-in-out, transform 0.2s ease-in-out;
+    outline: none;
+    text-transform: uppercase;
+    font-weight: bold;
+    letter-spacing: 1px;
+  }
+  
+  .payment-button:hover {
+    background: #2877a4; /* Darker Blue */
+    transform: scale(1.05); /* Button pop effect */
+  }
+  
+  .payment-button:active {
+    transform: scale(0.95); /* Click effect */
+  }
+  
+  .payment-button:disabled {
+    background: #ccc; /* Disabled look */
+    cursor: not-allowed;
+  }
+  

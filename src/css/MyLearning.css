@@ -1,0 +1,97 @@
+/* My Learning CSS */
+.learning-container {
+  padding: 40px 20px;
+  text-align: center;
+  background-color: #f5f5f5;
+  min-height: 100vh;
+}
+
+.learning-title {
+  font-family: 'Iceland', sans-serif;
+  font-size: 40px;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.learning-title::after {
+  content: attr(data-count);
+  font-size: 24px;
+  font-weight: bold;
+  color: #ff6347;
+  display: block;
+  margin-top: 10px;
+}
+
+.learning-empty {
+  font-size: 18px;
+  color: #777;
+  margin-top: 20px;
+}
+
+.learning-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin-top: 20px;
+  align-items: center;
+}
+
+.learning-card {
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+  width: 100%;
+  max-width: 800px;
+  display: flex;
+  align-items: center;
+  padding: 15px;
+  transition: transform 0.3s ease-in-out;
+  gap: 20px;
+}
+
+
+.learning-thumbnail {
+  width: 250px;
+  height: 140px;
+  object-fit: cover;
+  border-radius: 12px;
+}
+
+.learning-details {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  gap: 10px;
+  flex: 1;
+}
+
+.learning-course-title {
+  font-size: 18px;
+  font-weight: bold;
+  color: #333;
+}
+
+.learning-description {
+  font-size: 14px;
+  color: #555;
+}
+
+.start-course-btn {
+  background: linear-gradient(135deg, #6c63ff, #4a47a3);
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.3s;
+  align-self: flex-start;
+  box-shadow: 5px 5px 2px rgb(0, 6, 86);
+}
+
+.start-course-btn:hover {
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  background: linear-gradient(135deg, #383582, #4e48bc);
+  box-shadow: 6px 6px 4px rgb(1, 6, 73);
+}

@@ -1,0 +1,211 @@
+/* General Styles */
+body {
+  font-family: 'Poppins', sans-serif;
+  line-height: 1.6;
+  margin: 0;
+  padding: 0;
+  background-color: #f8f9fa;
+}
+
+.course-page {
+  max-width: 1200px;
+  margin: 50px auto;
+  padding: 30px;
+  background-color: #ffffff;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+}
+
+/* 🏆 Course Header */
+.course-header {
+  padding-bottom: 20px;
+  margin-bottom: 25px;
+  border-bottom: 2px solid #ddd;
+}
+
+.course-title {
+  font-size: 2.5em;
+  font-weight: bold;
+  color: #222;
+}
+
+.course-description {
+  font-size: 1.3em;
+  color: #444;
+  line-height: 1.8;
+  background: #f4f4f4;
+  padding: 20px;
+  border-left: 6px solid #e67e22;
+  border-radius: 6px;
+}
+
+/* 🎨 Course Content Section */
+.course-content {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 25px;
+  margin-top: 30px;
+}
+
+.course-thumbnail {
+  flex: 1;
+  max-width: 460px;
+  border-radius: 8px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.12);
+}
+
+.course-details {
+  flex: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.course-price {
+  font-size: 2em;
+  font-weight: bold;
+  color: #e67e22;
+  margin-top: 15px;
+}
+
+/* 🎯 Additional Details Section */
+.course-extra {
+  margin-top: 40px;
+}
+
+.course-extra h2 {
+  font-size: 1.8em;
+  font-weight: bold;
+  color: #222;
+  margin-bottom: 12px;
+  padding-bottom: 5px;
+  border-bottom: 2px solid #ddd;
+}
+
+.course-learnings,
+.course-requirements {
+  list-style-type: none;
+  padding: 0;
+  margin-top: 10px;
+}
+
+.course-learnings li,
+.course-requirements li {
+  font-size: 1.1em;
+  background: url('https://cdn-icons-png.flaticon.com/512/845/845646.png') left center no-repeat;
+  background-size: 20px;
+  padding-left: 35px;
+  margin-bottom: 10px;
+  color: #333;
+  display: flex;
+  align-items: center;
+}
+
+/* 📚 Long Description */
+.long-description {
+  font-size: 1.2em;
+  color: #555;
+  line-height: 1.8;
+  background: #f9f9f9;
+  padding: 20px;
+  border-left: 6px solid #3498db;
+  border-radius: 6px;
+  margin-top: 20px;
+}
+
+/* 🎥 Course Videos */
+.course-videos {
+  margin-top: 50px;
+  padding: 25px;
+  background: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 5px 12px rgba(0, 0, 0, 0.12);
+}
+
+.videos-header {
+  font-size: 1.8em;
+  font-weight: bold;
+  color: #222;
+  margin-bottom: 18px;
+}
+
+.video-wrapper {
+  margin-bottom: 30px;
+  background: #f4f4f4;
+  padding: 15px;
+  border-radius: 8px;
+}
+
+.video-label {
+  font-size: 1.2em;
+  font-weight: bold;
+  color: #555;
+  margin-bottom: 8px;
+  display: block;
+}
+
+.course-video {
+  width: 100%;
+  max-width: 850px;
+  border-radius: 8px;
+  box-shadow: 0 5px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* ⚠️ No Videos Message */
+.no-videos {
+  font-size: 1.2em;
+  font-weight: bold;
+  color: #999;
+  text-align: center;
+  padding: 20px;
+}
+
+/* 📱 Responsive Design */
+@media (max-width: 1024px) {
+  .course-content {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .course-thumbnail {
+    max-width: 100%;
+  }
+
+  .course-video {
+    max-width: 100%;
+  }
+
+  .course-title {
+    font-size: 2.2em;
+  }
+
+  .course-description {
+    font-size: 1.1em;
+  }
+
+  .course-price {
+    font-size: 1.7em;
+  }
+}
+
+@media (max-width: 768px) {
+  .course-page {
+    padding: 20px;
+  }
+
+  .course-title {
+    font-size: 2em;
+  }
+
+  .course-description {
+    font-size: 1em;
+  }
+
+  .course-price {
+    font-size: 1.5em;
+  }
+
+  .videos-header {
+    font-size: 1.4em;
+  }
+}
