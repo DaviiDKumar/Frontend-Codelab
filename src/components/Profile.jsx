@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import "../CSS/Profile.css";
+import "../css/Profile.css";
 
 const Profile = () => {
   const [userData, setUserData] = useState(null);
