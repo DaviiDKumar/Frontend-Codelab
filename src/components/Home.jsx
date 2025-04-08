@@ -1,6 +1,6 @@
 
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
-import '../CSS/Home.css';
+import '../css/Home.css';
 import Hero from './Hero';
 // 
 import Courses from './Courses';
