@@ -25,7 +25,7 @@ import ReactPage from "../src/pages/React";
 import PythonPage from "../src/pages/Python";
 import MachineLearningPage from "../src/pages/MachineLearning";
 import AIPage from "../src/pages/AI";
-import BlockchainPage from "../src/pages/Blockchain";
+import BlockchainPage from "../src/pages/BlockChain";
 import CyberSecurityPage from "../src/pages/CyberSecurity";
 import DevOpsPage from "../src/pages/DevOps";
 import UIUXPage from "../src/pages/UIUX";
