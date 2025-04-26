@@ -189,6 +189,7 @@
     flex-direction: column-reverse;
     width: 90vw;
     border-radius: 12px;
+    margin: 2rem auto;
   }
 
   .leftPanel,
