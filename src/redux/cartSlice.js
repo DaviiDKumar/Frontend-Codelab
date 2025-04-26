@@ -23,7 +23,6 @@ export const saveCart = createAsyncThunk(
       console.log("Saving cart items to the backend:", userId, cartItems);
 
       const response = await axios.put(
-        `http://localhost:3000/api/savethecart/${userId}`, // API Endpoint
         { cartItems }, // Request body containing cart items
         { withCredentials: true } // Send cookies with request
       );
