@@ -44,10 +44,10 @@ const PaymentButton = ({ amount }) => {
 
           if (verify.data.message === "Payment Verified Successfully") {
             alert(verify.data.message);
-            
+
             dispatch(addToLearning(cart));    // Move to My Learning
             dispatch(clearCart()); // Clear Cart
-            navigate("/SaveMyLearningButton")
+            navigate("/MyLearning")
           } else {
             alert("Payment Verification Failed!");
           }

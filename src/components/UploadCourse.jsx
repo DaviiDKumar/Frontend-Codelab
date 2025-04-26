@@ -1,6 +1,11 @@
 import { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+
+import { useDispatch } from "react-redux";
+import { setTotalCourses } from "../redux/courseSlice.js"; // <-- make sure your path is correct
+
+// Inside your component
 import "../css/UploadCourse.css";
 import { FaTrash, FaPlus, FaUpload, FaVideo, FaImage } from "react-icons/fa";
 
@@ -19,10 +24,11 @@ const UploadCourse = () => {
     const [thumbnailProgress, setThumbnailProgress] = useState(0);
     const [videoProgress, setVideoProgress] = useState(0);
     const navigate = useNavigate();
+    const dispatch = useDispatch();
 
     const categories = [
-        "Web Development", "DSA", "React", "Python", 
-        "Machine Learning", "AI", "Blockchain", 
+        "Web Development", "DSA", "React", "Python",
+        "Machine Learning", "AI", "Blockchain",
         "Cyber Security", "DevOps", "UI/UX"
     ];
 
@@ -79,6 +85,29 @@ const UploadCourse = () => {
             }
 
             setMessage("✅ Course uploaded successfully!");
+
+
+
+
+
+            // Update handleCreateCourse after uploading video:
+            setMessage("✅ Course uploaded successfully!");
+
+            // ⬇️ Fetch updated courses list
+            try {
+                const res = await axios.get("http://localhost:3000/api/fetchCourses", {
+                    withCredentials: true,
+                });
+                dispatch(setTotalCourses(res.data.courses));
+            } catch (err) {
+                console.log("⚠️ Error fetching updated course list", err);
+            }
+
+
+
+
+
+
             navigate("/");
         } catch (error) {
             setMessage("❌ Failed to upload course", error);
@@ -91,14 +120,14 @@ const UploadCourse = () => {
         <div className="upload-course-container">
             <h2 className="upload-course-heading">Upload Course</h2>
 
-               {/* Category Dropdown */}
-               <label className="upload-dropdown-label">Select Course Category </label>
-                <select className="upload-dropdown" value={category} onChange={(e) => setCategory(e.target.value)} required>
-                    <option value="" disabled>Select Category</option>
-                    {categories.map((cat, index) => (
-                        <option key={index} value={cat}>{cat}</option>
-                    ))}
-                </select>
+            {/* Category Dropdown */}
+            <label className="upload-dropdown-label">Select Course Category </label>
+            <select className="upload-dropdown" value={category} onChange={(e) => setCategory(e.target.value)} required>
+                <option value="" disabled>Select Category</option>
+                {categories.map((cat, index) => (
+                    <option key={index} value={cat}>{cat}</option>
+                ))}
+            </select>
             {message && <p className="upload-message">{message}</p>}
 
             {/* Basic Details Section */}
@@ -109,7 +138,7 @@ const UploadCourse = () => {
                 <textarea className="upload-textarea" placeholder="Long Description" value={longDescription} onChange={(e) => setLongDescription(e.target.value)} required />
                 <input type="number" className="upload-input" placeholder="Price" value={price} onChange={(e) => setPrice(e.target.value)} required />
 
-             
+
             </div>
 
             {/* Key Learnings Section */}

@@ -13,21 +13,29 @@ import Cart from "./components/Cart";
 import CoursePage from "./components/CoursePage";
 import Footer from "./components/Footer";
 import MyLearning from "./components/MyLearning";
-import SaveMyLearningButton from "./components/Savemylearning";
 import CoursePageNormal from "./components/CoursePageNormal";
 import DeleteButton from "./components/DeleteButton";
 import ProtectedRoute from "./Routes/ProtectedRoute";
 import PublicRoute from "./Routes/PublicRoute";
 
-// 👇 ADD THESE
-
+// Import your category components
+import WebDevelopment from "../src/pages/WebDevelopment";
+import DSA from "../src/pages/DSA";
+import ReactPage from "../src/pages/React";
+import PythonPage from "../src/pages/Python";
+import MachineLearningPage from "../src/pages/MachineLearning";
+import AIPage from "../src/pages/AI";
+import BlockchainPage from "../src/pages/Blockchain";
+import CyberSecurityPage from "../src/pages/CyberSecurity";
+import DevOpsPage from "../src/pages/DevOps";
+import UIUXPage from "../src/pages/UIUX";
 
 const App = () => {
   return (
     <>
       <Router>
         <Navbar />
-        <Routes>
+        <Routes>.
           {/* Public Routes */}
           <Route path="/" element={<Home />} />
           <Route element={<PublicRoute />}>
@@ -42,8 +50,20 @@ const App = () => {
             <Route path="/cart" element={<Cart />} />
             <Route path="/updateProfile" element={<UpdateProfilePage />} />
             <Route path="/my-learning" element={<MyLearning />} />
-            <Route path="/SaveMyLearningButton" element={<SaveMyLearningButton />} />
+            
           </Route>
+
+          {/* Category Routes */}
+          <Route path="/web-development" element={<WebDevelopment />} />
+          <Route path="/dsa" element={<DSA />} />
+          <Route path="/react" element={<ReactPage />} />
+          <Route path="/python" element={<PythonPage />} />
+          <Route path="/machine-learning" element={<MachineLearningPage />} />
+          <Route path="/ai" element={<AIPage />} />
+          <Route path="/blockchain" element={<BlockchainPage />} />
+          <Route path="/cyber-security" element={<CyberSecurityPage />} />
+          <Route path="/devops" element={<DevOpsPage />} />
+          <Route path="/ui-ux" element={<UIUXPage />} />
 
           {/* Publicly available course pages */}
           <Route path="/course/:id" element={<CoursePage />} />

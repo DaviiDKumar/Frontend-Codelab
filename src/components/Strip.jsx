@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";  // Import Link from React Router
 import "../css/Strip.css";
 
 const Strip = () => {
@@ -17,9 +18,9 @@ const Strip = () => {
   return (
     <div className="course-strip">
       {courses.map((course, index) => (
-        <span key={index} className="course-item">
+        <Link to={`/${course.toLowerCase().replace(/ /g, "-")}`} key={index} className="course-item">
           {course}
-        </span>
+        </Link>
       ))}
     </div>
   );

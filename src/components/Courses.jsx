@@ -2,19 +2,22 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 import { addToCart } from "../redux/cartSlice";
-import { setCourses, searchCourses, setTotalCourses } from "../redux/courseSlice";
-import { Link } from "react-router-dom";
+import { setTotalCourses } from "../redux/courseSlice";
 import "../css/Courses.css";
-import Search from "./Search";
+
+import CourseCard from "../Cards/CourseCard1.jsx"; // Import the CourseCard component
+import { motion } from "framer-motion"; // Import Framer Motion for smooth scroll
 
 const Courses = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
   const [toast, setToast] = useState(false);
-  const [activeCategory, setActiveCategory] = useState("DevOps");
+  const [activeCategory, setActiveCategory] = useState("All");
 
   const dispatch = useDispatch();
-  const totalCourses = useSelector((state) => state.course.totalCourses); // Fetch all courses from Redux
+  const totalCourses = useSelector((state) => state.course.totalCourses);
+
+  const categories = ["All", "Web Development", "DSA", "React", "Python"];
 
   useEffect(() => {
     const fetchCourses = async () => {
@@ -23,19 +26,16 @@ const Courses = () => {
           withCredentials: true,
         });
 
-        console.log("API called");
-        console.log("Courses:", res.data.courses);
-
-        dispatch(setTotalCourses(res.data.courses)); // Store all courses in Redux
+        dispatch(setTotalCourses(res.data.courses));
         setLoading(false);
       } catch (err) {
-        console.error("Failed to fetch courses", err);
         setError("Failed to fetch courses");
         setLoading(false);
+        console.log(err);
       }
     };
 
-    if (!totalCourses.length) { // Only fetch if courses are not already loaded
+    if (!totalCourses.length) {
       setLoading(true);
       fetchCourses();
     } else {
@@ -43,12 +43,10 @@ const Courses = () => {
     }
   }, [dispatch, totalCourses]);
 
-  // Filter courses based on the selected category
-  const filteredCourses = totalCourses.filter((course) =>
-    [course.title, course.description].some((field) =>
-      field.toLowerCase().includes(activeCategory.toLowerCase())
-    )
-  );
+  const filteredCourses =
+    activeCategory === "All"
+      ? totalCourses
+      : totalCourses.filter((course) => course.category === activeCategory);
 
   const addCourseToCart = (course) => {
     const user = JSON.parse(localStorage.getItem("user"));
@@ -59,30 +57,21 @@ const Courses = () => {
     } else {
       setToast("Please login to add courses to cart 🚫");
     }
-    
-    setTimeout(() => setToast(false), 1200);
-  };
 
-  const handleSearch = (query) => {
-    if (query.trim().length > 2) {
-      dispatch(searchCourses(query));
-    } else {
-      dispatch(setCourses(filteredCourses)); // Reset courses if query length < 3
-    }
+    setTimeout(() => setToast(false), 1200);
   };
 
   if (loading) return <h3>Loading...</h3>;
   if (error) return <h3>{error}</h3>;
 
   return (
-    <div className="courses-container">
-      <div>
-        <h2>All Courses</h2>
-        <Search onSearch={handleSearch} />
+    <div className="coursE-container">
+      <div className="coursE-header">
+        <h2>Explore Our Courses</h2>
       </div>
 
-      <ul className="categories">
-        {["DevOps", "Python", "C++", "C Programming", "MERN"].map((category) => (
+      <ul className="categorY">
+        {categories.map((category) => (
           <li
             key={category}
             className={activeCategory === category ? "active" : ""}
@@ -93,29 +82,27 @@ const Courses = () => {
         ))}
       </ul>
 
-      <div className="courses-grid">
-        {filteredCourses.length > 0 ? (
-          filteredCourses.map((course) => (
-            <div key={course._id} className="course-card">
-              <Link to={`/newcoursepage/${course._id}`}>
-                <img src={course.thumbnail} alt={course.title} className="course-image" />
-              </Link>
-              <div className="course-info">
-                <h3>
-                  <Link to={`/newcoursepage/${course._id}`}>{course.title}</Link>
-                </h3>
-                <p>{course.description}</p>
-                <p>₹{course.price}</p>
-                <div className="course-footer">
-                  <button onClick={() => addCourseToCart(course)}>🛒 Add to Cart</button>
-                </div>
-              </div>
-            </div>
-          ))
-        ) : (
-          <h3>No Courses Found ❌</h3>
-        )}
-      </div>
+      {/* Horizontal Slider with Framer Motion */}
+      <motion.div
+        className={`mainCourses-grid ${filteredCourses.length < 4 ? "centered" : ""}`}
+        initial={{ x: "-100%" }}
+        animate={{ x: 0 }}
+        transition={{ type: "spring", stiffness: 100, damping: 25 }}
+      >
+        <div className="courses-slider">
+          {filteredCourses.length > 0 ? (
+            filteredCourses.map((course) => (
+              <CourseCard
+                key={course._id}
+                course={course}
+                onAddToCart={addCourseToCart}
+              />
+            ))
+          ) : (
+            <h3>No Courses Found ❌</h3>
+          )}
+        </div>
+      </motion.div>
 
       {toast && <div className="toast">{toast}</div>}
     </div>
