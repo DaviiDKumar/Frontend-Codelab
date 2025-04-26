@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { addToCart } from "../redux/cartSlice";
 import { setTotalCourses } from "../redux/courseSlice";
 import "../css/Courses.css";
-
+import { saveCart } from "../redux/cartSlice";
 import CourseCard from "../Cards/CourseCard1.jsx"; // Import the CourseCard component
 import { motion } from "framer-motion"; // Import Framer Motion for smooth scroll
 
@@ -48,18 +48,28 @@ const Courses = () => {
       ? totalCourses
       : totalCourses.filter((course) => course.category === activeCategory);
 
-  const addCourseToCart = (course) => {
-    const user = JSON.parse(localStorage.getItem("user"));
-
-    if (user) {
-      dispatch(addToCart(course));
-      setToast(`${course.title} added to cart ✅`);
-    } else {
-      setToast("Please login to add courses to cart 🚫");
-    }
-
-    setTimeout(() => setToast(false), 1200);
-  };
+      const addCourseToCart = (course) => {
+        const user = JSON.parse(localStorage.getItem("user"));
+      
+        if (user) {
+          // 1. Add course to Redux state and Local Storage (Synchronously)
+          dispatch(addToCart(course));  // Update Redux state and local storage
+      
+          // 2. Fetch current cart from localStorage and send to backend (Asynchronously)
+          const currentCart = JSON.parse(localStorage.getItem("cart")) || [];
+          const cartItems = currentCart.map((item) => ({ ...item, quantity: item.quantity || 1 }));
+      
+          // 3. Dispatch the saveCart action to send cart items to backend
+          dispatch(saveCart({ userId: user._id, cartItems }));
+      
+          setToast(`${course.title} added to cart ✅`);
+        } else {
+          setToast("Please login to add courses to cart 🚫");
+        }
+      
+        setTimeout(() => setToast(false), 1200);
+      };
+      
 
   if (loading) return <h3>Loading...</h3>;
   if (error) return <h3>{error}</h3>;

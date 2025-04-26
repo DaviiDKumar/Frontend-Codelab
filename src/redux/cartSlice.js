@@ -18,24 +18,36 @@ const getCartFromLocalStorage = () => {
 // Async Thunk to Save Cart to Backend
 export const saveCart = createAsyncThunk(
   "cart/saveCart",
-  async ({ userId, cartItems }, { dispatch }) => {
+  async ({ userId, cartItems }) => {
     try {
-      console.log("Saving cart items to the backend:", userId, cartItems);
+      console.log("Saving cart items to the backend:", cartItems);
+
+      // Make sure cartItems is always an array
+      const updatedCartItems = Array.isArray(cartItems) ? cartItems : [cartItems];
+
+      // Ensure the payload has quantity
+      const finalCartItems = updatedCartItems.map(item => ({
+        ...item,
+        quantity: item.quantity || 1, // Ensure quantity is included
+      }));
 
       const response = await axios.put(
-        { cartItems }, // Request body containing cart items
-        { withCredentials: true } // Send cookies with request
+        `http://localhost:3000/api/savethecart/${userId}`, 
+        { cartItems: finalCartItems }, // Send cartItems with quantity
+        { withCredentials: true }
       );
 
       if (response.data.message === "Cart items updated successfully") {
         console.log("✅ Cart Items Saved Successfully");
-        dispatch(clearCart()); // Clear cart from Redux after successful save
+      
       }
     } catch (error) {
       console.error("❌ Error saving cart items to the backend:", error);
     }
   }
 );
+
+
 
 const initialState = {
   cart: getCartFromLocalStorage(), // Initialize cart from LocalStorage
@@ -61,7 +73,7 @@ const cartSlice = createSlice({
       state.cart = state.cart.filter((item) => item._id !== action.payload);
       localStorage.setItem("cart", JSON.stringify(state.cart)); // Sync cart with LocalStorage
     },
-    
+
 
     // Update Product Quantity
     updateQuantity(state, action) {

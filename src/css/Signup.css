@@ -1,126 +1,128 @@
-/* Google Fonts */
-@import url('https://fonts.googleapis.com/css2?family=Iceland&family=Poppins:wght@400;600&display=swap');
-
+/* Signup Page Styles */
 .signup-container {
-  width: 100%;
-  height: 80vh;
   display: flex;
-  align-items: center;
   justify-content: center;
-  background: #f4f4f4; 
-  padding: 40px;
-  animation: fadeIn 0.8s ease-in-out;
+  align-items: center;
+  min-height: 80vh;
+  background: linear-gradient(145deg, #ffc5f3, #f989bd);
+  padding: 0 15px;
+  font-family: "Iceland",serif !important;
 }
 
-.signup-form {
+.form-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-color: rgba(255, 255, 255, 0.85);
+  border-radius: 15px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  max-width: 800px;
   width: 100%;
-  max-width: 400px;
   padding: 40px;
-  background: #fff;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
-  border-radius: 10px;
   text-align: center;
-  font-family: "Poppins", sans-serif;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  gap: 20px;
+  font-family: "Iceland",serif !important;
 }
 
-.signup-form:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
+.form-content {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-items: center;
 }
 
-.signup-form h2 {
-  margin-bottom: 20px;
-  font-size: 36px;
-  font-family: "Iceland", cursive;
+h2 {
+  font-size: 4rem;
   color: #333;
-  letter-spacing: 0.1rem;
-  text-transform: uppercase;
+  margin-bottom: 20px;
+  font-family: 'Roboto', sans-serif;
+  font-family: "Iceland",serif !important;
 }
 
 .signup-input {
   width: 100%;
   padding: 12px;
-  margin-bottom: 20px;
+  margin: 10px 0;
   border: 1px solid #ccc;
   border-radius: 8px;
+  font-size: 1rem;
   outline: none;
-  transition: border 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
-  font-size: 16px;
-  font-family: "Poppins", sans-serif;
+  transition: border-color 0.3s ease;
 }
 
 .signup-input:focus {
-  border: 1px solid #5e72e4;
-  box-shadow: 0px 0px 10px rgba(94, 114, 228, 0.7);
+  border-color: #ff86c5;
 }
 
 .signup-button {
+  font-family: "Iceland",serif !important;
   width: 100%;
-  padding: 12px;
-  background: #5e72e4;
+  padding: 14px;
+  background-color: #ff86c5;
   color: #fff;
-  font-size: 16px;
   border: none;
   border-radius: 8px;
+  font-size: 2.2rem;
   cursor: pointer;
-  transition: background 0.3s ease-in-out, transform 0.3s ease-in-out;
-  text-transform: uppercase;
-  letter-spacing: 0.1rem;
-  font-weight: bold;
+  transition: background-color 0.3s ease;
 }
 
 .signup-button:hover {
-  background: #3d57d8;
-  transform: scale(1.05);
+  background-color: #ff66a1;
 }
 
-.signup-button:disabled {
-  background: #ccc;
-  cursor: not-allowed;
+.login-info {
+  margin-top: 20px;
+  font-size: 1rem;
+  color: #555;
 }
 
-.error-message {
-  color: #d9534f;
-  margin-bottom: 15px;
-  font-size: 14px;
+.login-info a {
+  color: #ff86c5;
+  text-decoration: none;
+  font-weight: bold;
 }
 
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(-30px);
+.login-info a:hover {
+  color: #ff66a1;
+}
+
+.signup-image {
+  max-width: 100%;
+  height: auto;
+  border-radius: 10px;
+  margin-top: 20px;
+}
+
+/* Flexbox for larger screens (side by side) */
+@media (min-width: 768px) {
+  .form-container {
+    flex-direction: row;
+    align-items: flex-start;
   }
-  to {
-    opacity: 1;
-    transform: translateY(0);
+
+  .form-content {
+    flex: 1;
+    margin-right: 20px; /* Space between form and image */
+  }
+
+  .signup-image {
+    max-width: 350px; /* Optional: you can adjust the image size */
+    height: auto;
   }
 }
 
-/* Responsive Design */
-@media (max-width: 768px) {
-  .signup-form {
+/* Responsive Design (Smaller screens - Image below the form) */
+@media (max-width: 767px) {
+  .form-container {
+    margin: 2rem auto;
+    flex-direction: column;
     padding: 30px;
   }
-  .signup-form h2 {
-    font-size: 28px;
-  }
-}
 
-@media (max-width: 480px) {
-  .signup-form {
-    padding: 20px;
-  }
-  .signup-form h2 {
-    font-size: 24px;
-  }
-}
-
-@media (max-width: 300px) {
-  .signup-form {
-    padding: 15px;
-  }
-  .signup-form h2 {
-    font-size: 20px;
+  .signup-image {
+    width: 80%;
+    margin-top: 20px;
   }
 }

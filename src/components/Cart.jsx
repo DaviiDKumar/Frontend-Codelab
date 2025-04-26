@@ -35,6 +35,8 @@ const Cart = () => {
     }
   };
 
+  
+  console.log("cart items",cartItems)
 
   return (
     <div className="cart-container">
