@@ -7,6 +7,8 @@ import Courses from './Courses';
 import Strip from './Strip';
 import Welcome from './Welcome';
 import Search from './Search';
+import Herosec2 from './Herosec2';
+import LearningGoals from './Learninggoals';
 
 
 const Home = () => {
@@ -21,6 +23,8 @@ const Home = () => {
       <Welcome />
       <Hero />
       <Courses />
+      <LearningGoals />
+      <Herosec2 />
 
     </>
   );

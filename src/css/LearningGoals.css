@@ -1,0 +1,112 @@
+.learning-goals {
+    padding: .5rem 3rem;
+    display: flex;
+    gap: 40px;
+    padding: 40px;
+    flex-wrap: wrap;
+   
+
+}
+
+.left-section {
+    flex: 1;
+    margin-left: 4%;
+    min-width: 300px;
+}
+
+.left-section h2 {
+    font-size: 28px;
+    margin-bottom: 20px;
+    color: #21184d;
+}
+
+.goal-card {
+   max-width: 90%;
+    display: flex;
+    align-items: flex-start;
+    gap: 15px;
+    padding: 15px;
+    margin-bottom: 20px;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    background-color: #fff;
+    transition: border-color 0.3s, box-shadow 0.3s;
+    cursor: pointer;
+    /* Added transition for box-shadow */
+}
+
+.goal-card.active {
+    
+    border: 2px solid #7b61ff;
+  box-shadow:  inset  4px 4px 0px rgba(123, 97, 255, 0.9);
+}
+.goal-card:hover{
+    background-color: #f2f2f2;
+    box-shadow:  none;
+}
+
+.goal-card .icon {
+    font-size: 40px;
+    color: #7b61ff;
+}
+
+.goal-card h3 {
+    margin: 0;
+    font-size: 1.3rem;
+}
+
+.goal-card p {
+    margin: 8px 0 5px 0;
+    color: #555;
+}
+
+.goal-card a {
+    font-size: 14px;
+    color: #7b61ff;
+    text-decoration: none;
+}
+
+.enterprise-tag {
+    background: #eee;
+    color: #555;
+    font-size: 12px;
+    padding: 2px 6px;
+    border-radius: 4px;
+    margin-left: 8px;
+}
+
+.right-section {
+    flex: 1;
+    min-width: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.right-section img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+}
+
+/* Focus Effect */
+.goal-card:focus-within {
+    border: 2px solid #7b61ff;
+    /* Change border color on focus */
+    box-shadow: 0 0 10px rgba(123, 97, 255, 0.5);
+    /* Add left-side box-shadow */
+    outline: none;
+    /* Remove default outline */
+}
+
+.goal-card:focus-within .icon {
+    color: #7b61ff;
+    /* Ensure icon color changes on focus */
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .learning-goals {
+        flex-direction: column;
+    }
+}

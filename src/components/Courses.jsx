@@ -48,28 +48,27 @@ const Courses = () => {
       ? totalCourses
       : totalCourses.filter((course) => course.category === activeCategory);
 
-      const addCourseToCart = (course) => {
-        const user = JSON.parse(localStorage.getItem("user"));
-      
-        if (user) {
-          // 1. Add course to Redux state and Local Storage (Synchronously)
-          dispatch(addToCart(course));  // Update Redux state and local storage
-      
-          // 2. Fetch current cart from localStorage and send to backend (Asynchronously)
-          const currentCart = JSON.parse(localStorage.getItem("cart")) || [];
-          const cartItems = currentCart.map((item) => ({ ...item, quantity: item.quantity || 1 }));
-      
-          // 3. Dispatch the saveCart action to send cart items to backend
-          dispatch(saveCart({ userId: user._id, cartItems }));
-      
-          setToast(`${course.title} added to cart ✅`);
-        } else {
-          setToast("Please login to add courses to cart 🚫");
-        }
-      
-        setTimeout(() => setToast(false), 1200);
-      };
-      
+  const addCourseToCart = (course) => {
+    const user = JSON.parse(localStorage.getItem("user"));
+
+    if (user) {
+      // 1. Add course to Redux state and Local Storage (Synchronously)
+      dispatch(addToCart(course));  // Update Redux state and local storage
+
+      // 2. Fetch current cart from localStorage and send to backend (Asynchronously)
+      const currentCart = JSON.parse(localStorage.getItem("cart")) || [];
+      const cartItems = currentCart.map((item) => ({ ...item, quantity: item.quantity || 1 }));
+
+      // 3. Dispatch the saveCart action to send cart items to backend
+      dispatch(saveCart({ userId: user._id, cartItems }));
+
+      setToast(`${course.title} added to cart ✅`);
+    } else {
+      setToast("Please login to add courses to cart 🚫");
+    }
+
+    setTimeout(() => setToast(false), 1200);
+  };
 
   if (loading) return <h3>Loading...</h3>;
   if (error) return <h3>{error}</h3>;
@@ -80,17 +79,18 @@ const Courses = () => {
         <h2>Explore Our Courses</h2>
       </div>
 
-      <ul className="categorY">
+      {/* Horizontal Category Strip with Scroll */}
+      <div className="category-strip">
         {categories.map((category) => (
-          <li
+          <span
             key={category}
-            className={activeCategory === category ? "active" : ""}
+            className={`category-item ${activeCategory === category ? "active" : ""}`}
             onClick={() => setActiveCategory(category)}
           >
             {category}
-          </li>
+          </span>
         ))}
-      </ul>
+      </div>
 
       {/* Horizontal Slider with Framer Motion */}
       <motion.div

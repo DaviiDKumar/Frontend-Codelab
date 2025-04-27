@@ -16,7 +16,6 @@ import {
 } from "react-icons/fa";
 import "../css/Navbar.css";
 import { useState } from "react";
-// import { savemyLearn } from "../redux/myLearningSlice";
 
 const Navbar = () => {
   const dispatch = useDispatch();
@@ -24,16 +23,17 @@ const Navbar = () => {
   const totalQuantity = useSelector((state) =>
     state.cart.cart.reduce((total, item) => total + item.quantity, 0)
   );
-  const myLearningCount = useSelector((state) => state.myLearning.myLearning.length); // My Learning Count
+  const myLearningCount = useSelector((state) => state.myLearning.myLearning.length);
   const [menuOpen, setMenuOpen] = useState(false);
+  const [isLoggingOut, setIsLoggingOut] = useState(false); // Added loading state
   const navigate = useNavigate();
   const cartItems = useSelector((state) => state.cart.cart);
-  // const myLearningItems = useSelector((state) => state.myLearning.myLearning);
 
   const handleLogout = async () => {
+    setIsLoggingOut(true); // Set loading state to true
+
     try {
       await dispatch(saveCart({ userId: user._id, cartItems }));
-      // await dispatch(savemyLearn({ userId: user._id, myLearningItems }));
       console.log("Logging out...", user.name);
 
       const response = await axios.post(
@@ -53,6 +53,8 @@ const Navbar = () => {
       }
     } catch (error) {
       console.log("Logout failed", error);
+    } finally {
+      setIsLoggingOut(false); // Reset loading state when done
     }
   };
 
@@ -60,54 +62,61 @@ const Navbar = () => {
     setMenuOpen(!menuOpen);
   };
 
-
   return (
-    <div className="navbar">
-      <div className="logo">
-        <FaBook /> CODE LAB
+    <div className="navbarNav">
+      <div className="logoNav">
+        <h1><FaBook /> CODE LAB</h1>
       </div>
 
-      <div className={`nav-links ${menuOpen ? "show" : ""}`}>
-        <Link to="/" className="nav-item" onClick={() => setMenuOpen(false)}>
-          <FaHome className="nav-icon" /> Home
+      <div className={`nav-linksNav ${menuOpen ? "showNav" : ""}`}>
+        <Link to="/" className="nav-itemNav" onClick={() => setMenuOpen(false)}>
+          <FaHome className="nav-iconNav" /> Home
         </Link>
 
-        <Link to="/cart" className="nav-item" onClick={() => setMenuOpen(false)}>
-          <FaShoppingCart className="nav-icon" />
+        <Link to="/cart" className="nav-itemNav" onClick={() => setMenuOpen(false)}>
+          <FaShoppingCart className="nav-iconNav" />
           Cart
-          {totalQuantity > 0 && <span className="cart-badge">{totalQuantity}</span>}
+          {totalQuantity > 0 && <span className="cart-badgeNav">{totalQuantity}</span>}
         </Link>
 
         {user && (
-          <Link to="/my-Learning" className="nav-item" onClick={() => setMenuOpen(false)}>
-            <FaBook className="nav-icon" /> My Learning
-            {myLearningCount > 0 && <span className="cart-badge">{myLearningCount}</span>}
+          <Link to="/my-Learning" className="nav-itemNav" onClick={() => setMenuOpen(false)}>
+            <FaBook className="nav-iconNav" /> My Learning
+            {myLearningCount > 0 && <span className="cart-badgeNav">{myLearningCount}</span>}
           </Link>
         )}
 
         {!user ? (
           <>
-            <Link to="/login" className="nav-item" onClick={() => setMenuOpen(false)}>
-              <FaSignInAlt className="nav-icon" /> Login
+            <Link to="/login" className="nav-itemNav" onClick={() => setMenuOpen(false)}>
+              <FaSignInAlt className="nav-iconNav" /> Login
             </Link>
-            <Link to="/signup" className="nav-item" onClick={() => setMenuOpen(false)}>
-              <FaUserPlus className="nav-icon" /> Signup
+            <Link to="/signup" className="nav-itemNav" onClick={() => setMenuOpen(false)}>
+              <FaUserPlus className="nav-iconNav" /> Signup
             </Link>
           </>
         ) : (
           <>
-            <Link to="/profile" className="nav-item" onClick={() => setMenuOpen(false)}>
-              <FaTachometerAlt className="nav-icon" /> Profile
+            <Link to="/profile" className="nav-itemNav" onClick={() => setMenuOpen(false)}>
+              <FaTachometerAlt className="nav-iconNav" /> Profile
             </Link>
 
-            <button onClick={handleLogout} className="nav-item logout-btn">
-              <FaSignOutAlt className="nav-icon" /> Logout
+            <button onClick={handleLogout} className="nav-itemNav logout-btnNav">
+              {isLoggingOut ? (
+                <>
+                  <span>Logging out...</span> {/* Show "Logging out..." when logging out */}
+                </>
+              ) : (
+                <>
+                  <FaSignOutAlt className="nav-iconNav" /> Logout
+                </>
+              )}
             </button>
           </>
         )}
       </div>
 
-      <div className="hamburger" onClick={toggleMenu}>
+      <div className="hamburgerNav" onClick={toggleMenu}>
         {menuOpen ? <FaTimes /> : <FaBars />}
       </div>
     </div>

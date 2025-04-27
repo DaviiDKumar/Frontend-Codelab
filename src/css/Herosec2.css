@@ -1,0 +1,66 @@
+/* Main container for the section */
+.herosec2-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1.5rem;
+    gap: 1rem;
+}
+
+/* Left div with a small text box */
+.herosec2-left {
+    width: 35%;
+}
+
+.herosec2-text-box {
+    padding: .5rem;
+
+
+}
+
+.herosec2-text-box h2 {
+    line-height: .9;
+    color: rgb(55, 18, 90);
+}
+
+/* Right div with an image */
+.herosec2-right {
+    width: 100%;
+}
+
+.herosec2-image {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+
+}
+
+.herosec2-button {
+    font-family: "Iceland", sans-serif;
+    margin-top: .7rem;
+    background-color: none !important;
+    background: none !important;
+    border: 2px solid rgb(55, 18, 90);
+    color: rgb(55, 18, 90);
+    font-size: large;
+}
+
+.herosec2-button:hover{
+    text-decoration: underline;
+    cursor: pointer;
+    text-decoration: underline;
+    text-underline-offset: 3px; 
+}
+
+/* Media Query for responsiveness */
+@media (max-width: 768px) {
+    .herosec2-container {
+        flex-direction: column-reverse;
+        align-items: center;
+    }
+
+    .herosec2-left,
+    .herosec2-right {
+        width: 100%;
+    }
+}
