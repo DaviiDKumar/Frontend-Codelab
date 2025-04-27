@@ -3,7 +3,7 @@ import axios from "axios";
 export const createOrder = async (amount) => {
   try {
     const { data } = await axios.post(
-      "http://localhost:3000/api/create-order",
+      "https://backend-codelab.onrender.com/api/create-order",
       { amount },
       { withCredentials: true }
     );

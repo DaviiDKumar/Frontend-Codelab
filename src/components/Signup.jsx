@@ -29,7 +29,7 @@ const Signup = () => {
 
     try {
       // Make the API request (backend not affected by password match check)
-      await axios.post("http://localhost:3000/api/signup", {
+      await axios.post("https://backend-codelab.onrender.com/api/signup", {
         name,
         email,
         password,

@@ -27,7 +27,7 @@ const Login = () => {
 
     try {
       const res = await axios.post(
-        "http://localhost:3000/api/login",
+        "https://backend-codelab.onrender.com/api/login",
         { email, password },
         { withCredentials: true }
       );

@@ -37,7 +37,7 @@ const Navbar = () => {
       console.log("Logging out...", user.name);
 
       const response = await axios.post(
-        "http://localhost:3000/api/logout",
+        "https://backend-codelab.onrender.com/api/logout",
         {},
         { withCredentials: true }
       );

@@ -32,7 +32,7 @@ export const saveCart = createAsyncThunk(
       }));
 
       const response = await axios.put(
-        `http://localhost:3000/api/savethecart/${userId}`, 
+        `https://backend-codelab.onrender.com/api/savethecart/${userId}`, 
         { cartItems: finalCartItems }, // Send cartItems with quantity
         { withCredentials: true }
       );

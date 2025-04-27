@@ -54,7 +54,7 @@ function UpdateProfilePage() {
 
       // Update User Data
       const updateResponse = await axios.put(
-        `http://localhost:3000/api/updateUser/${user._id}`,
+        `https://backend-codelab.onrender.com/api/updateUser/${user._id}`,
         { name, email, phone, address, bio },
         { withCredentials: true }
       );
@@ -65,7 +65,7 @@ function UpdateProfilePage() {
         // Upload Profile Picture
         if (profilePicture) {
           const uploadResponse = await axios.post(
-            `http://localhost:3000/api/upload/${user._id}`,
+            `https://backend-codelab.onrender.com/api/upload/${user._id}`,
             formData,
             {
               headers: { "Content-Type": "multipart/form-data" },

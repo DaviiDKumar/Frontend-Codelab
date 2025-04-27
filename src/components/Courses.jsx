@@ -22,7 +22,7 @@ const Courses = () => {
   useEffect(() => {
     const fetchCourses = async () => {
       try {
-        const res = await axios.get("http://localhost:3000/api/fetchCourses", {
+        const res = await axios.get("https://backend-codelab.onrender.com/api/fetchCourses", {
           withCredentials: true,
         });
 

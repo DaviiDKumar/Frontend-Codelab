@@ -12,7 +12,7 @@ const DeleteButton = () => {
 
     const handleDelete = async () => {
         try {
-            await axios.delete(`http://localhost:3000/api/deleteUser/${id}`, {
+            await axios.delete(`https://backend-codelab.onrender.com/api/deleteUser/${id}`, {
                 withCredentials: true,
             });
 

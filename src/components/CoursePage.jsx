@@ -12,7 +12,7 @@ const CoursePage = () => {
   useEffect(() => {
     const fetchCourse = async () => {
       try {
-        const response = await axios.get(`http://localhost:3000/api/fetchCourse/${id}`, {
+        const response = await axios.get(`https://backend-codelab.onrender.com/api/fetchCourse/${id}`, {
           withCredentials: true, // ✅ Include authentication credentials (cookies, session)
         });
         setCourse(response.data.course); // Save fetched course

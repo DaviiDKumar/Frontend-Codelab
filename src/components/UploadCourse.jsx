@@ -40,7 +40,7 @@ const UploadCourse = () => {
             setVideoProgress(0);
 
             const { data } = await axios.post(
-                "http://localhost:3000/api/createCourse",
+                "https://backend-codelab.onrender.com/api/createCourse",
                 { title, description, longDescription, price, category, keyLearnings, requirements }, // ✅ Requirements included
                 { withCredentials: true }
             );
@@ -52,7 +52,7 @@ const UploadCourse = () => {
                 formData.append("thumbnail", thumbnail);
 
                 await axios.put(
-                    `http://localhost:3000/api/upload-thumbnail/${courseId}`,
+                    `https://backend-codelab.onrender.com/api/upload-thumbnail/${courseId}`,
                     formData,
                     {
                         headers: { "Content-Type": "multipart/form-data" },
@@ -71,7 +71,7 @@ const UploadCourse = () => {
                 selectedVideos.forEach((video) => videoFormData.append("videos", video.file));
 
                 await axios.put(
-                    `http://localhost:3000/api/upload-videos/${courseId}`,
+                    `https://backend-codelab.onrender.com/api/upload-videos/${courseId}`,
                     videoFormData,
                     {
                         headers: { "Content-Type": "multipart/form-data" },
@@ -95,7 +95,7 @@ const UploadCourse = () => {
 
             // ⬇️ Fetch updated courses list
             try {
-                const res = await axios.get("http://localhost:3000/api/fetchCourses", {
+                const res = await axios.get("https://backend-codelab.onrender.com/api/fetchCourses", {
                     withCredentials: true,
                 });
                 dispatch(setTotalCourses(res.data.courses));

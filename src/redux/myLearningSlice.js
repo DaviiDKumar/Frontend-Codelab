@@ -9,7 +9,7 @@ export const savemyLearn = createAsyncThunk(
       console.log("Saving My Learning items to the backend:", userId, myLearningItems);
 
       const response = await axios.put(
-        `http://localhost:3000/api/savemylearning/${userId}`, // API Endpoint
+        `https://backend-codelab.onrender.com/api/savemylearning/${userId}`, // API Endpoint
         { myLearningItems }, // Request body containing My Learning items
         { withCredentials: true } // Send cookies with request
       );

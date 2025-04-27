@@ -37,7 +37,7 @@ const PaymentButton = ({ amount }) => {
           console.log("Payment Response:", response);
 
           const verify = await axios.post(
-            "http://localhost:3000/api/verify-payment",
+            "https://backend-codelab.onrender.com/api/verify-payment",
             response,
             { withCredentials: true }
           );
