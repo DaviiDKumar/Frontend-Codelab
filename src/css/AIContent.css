@@ -1,0 +1,151 @@
+/* Main Container */
+.ai-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 3rem;
+    height: 100vh;
+  }
+  
+  /* Left Section (Text) */
+  .ai-left {
+    flex: 1;
+    max-width: 30%;
+    padding: 2rem;
+    max-height: fit-content;
+  }
+  
+  .ai-left h1 {
+    font-size: 3rem;
+    color: #333;
+    line-height: .9;
+  }
+  
+  .ai-left p {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.2rem;
+    color: #000000;
+    margin-bottom: 1.5rem;
+  }
+  
+  .start-btn {
+    font-family: "Passero One", serif;
+    padding: 0.8rem 2rem;
+    font-size: 1rem;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+  
+  .start-btn:hover {
+    background-color: #0056b3;
+    text-decoration: underline;
+    text-underline-offset: .2rem;
+  }
+  
+  /* Right Section (Image) */
+  .ai-right {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+  }
+  
+  .ai-card {
+    width: 100%;
+    max-width: 100%;
+    object-fit: cover;
+    border-radius: 8px;
+  }
+  
+  /* Responsive Design */
+  
+  /* For tablets and smaller screens */
+  @media (max-width: 1024px) {
+    .ai-section {
+      flex-direction: column;
+      padding: 2rem;
+    }
+  
+    .ai-left {
+      max-width: 100%;
+      padding: 1.5rem;
+    }
+  
+    .ai-left h1 {
+      font-size: 2.5rem;
+    }
+  
+    .ai-left p {
+      font-size: 1rem;
+    }
+  
+    .ai-right {
+      width: 100%;
+      margin-top: 1.5rem;
+    }
+  
+    .ai-card {
+      width: 100%;
+      max-width: 100%;
+    }
+  }
+  
+  /* For mobile devices */
+  @media (max-width: 768px) {
+    .ai-left {
+      padding: 1rem;
+    }
+  
+    .ai-left h1 {
+      font-size: 2rem;
+    }
+  
+    .ai-left p {
+      font-size: 0.9rem;
+    }
+  
+    .start-btn {
+      font-size: 0.9rem;
+      padding: 0.6rem 1.5rem;
+    }
+  
+    .ai-card {
+      width: 100%;
+      max-width: 100%;
+      margin-top: 1rem;
+    }
+  }
+  
+  /* For very small screens (like small phones) */
+  @media (max-width: 480px) {
+    .ai-section {
+      padding: 1rem;
+    }
+  
+    .ai-left {
+      padding: 1rem;
+    }
+  
+    .ai-left h1 {
+      font-size: 1.8rem;
+    }
+  
+    .ai-left p {
+      font-size: 0.8rem;
+    }
+  
+    .start-btn {
+      font-size: 0.8rem;
+      padding: 0.5rem 1.2rem;
+    }
+  
+    .ai-card {
+      width: 100%;
+      max-width: 100%;
+      margin-top: 1rem;
+    }
+  }
+  

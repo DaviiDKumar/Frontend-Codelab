@@ -9,6 +9,8 @@ import Welcome from './Welcome';
 import Search from './Search';
 import Herosec2 from './Herosec2';
 import LearningGoals from './Learninggoals';
+import Feedback from './Feedback';
+import AIContent from './Aicontent';
 
 
 const Home = () => {
@@ -25,6 +27,8 @@ const Home = () => {
       <Courses />
       <LearningGoals />
       <Herosec2 />
+      <Feedback /> 
+      <AIContent />
 
     </>
   );

@@ -1,9 +1,14 @@
 import { useSelector } from "react-redux";
-import { useState } from "react";
+import {useEffect, useState } from "react";
 import "./pages.css";
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';  // Import Material UI arrow icon
 
 const AI = () => {
+
+  useEffect(() => {
+    window.scrollTo(0, 0); // Scroll to top when component mounts
+  }, []); // Empty dependency array makes it run only once after mount
+  
   const courses = useSelector((state) =>
     state.course.totalCourses.filter((course) => course.category === "AI")
   );

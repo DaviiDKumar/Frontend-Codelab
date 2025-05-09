@@ -1,0 +1,57 @@
+.feedback-section {
+    padding: 4rem 2rem;
+    background-color: #fff7f7;
+    color: #000000;
+  }
+  
+  .feedback-heading {
+    font-size: clamp(1.5rem, 3vw, 2.5rem);
+    margin-bottom: 3rem;
+    font-family: "Passero One", sans-serif;
+    color: #000000;
+    text-align: center;
+  }
+  
+  .feedback-grid {
+    display: grid;
+    gap: 2rem;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+  }
+  
+  .feedback-card {
+    background-color: #f1e8e8;
+    border-radius: 12px;
+    padding: 1.5rem;
+    box-shadow: 0 8px 16px rgba(255, 255, 255, 0.06);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+    text-align: left;
+  }
+  
+  .feedback-message {
+    font-size: 1rem;
+    font-style: italic;
+    font-family: "Poppins", sans-serif;
+    line-height: 1.5;
+    margin-bottom: 2rem;
+    color: #000000;
+  }
+  
+  .feedback-footer {
+    margin-top: auto;
+    padding-top: 1rem;
+    border-top: 1px solid #333;
+  }
+  
+  .feedback-name {
+    font-weight: bold;
+    font-family: "Poppins", sans-serif;
+    margin-bottom: 0.4rem;
+    font-size: 1rem;
+    color: #000000;
+  }

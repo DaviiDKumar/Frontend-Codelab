@@ -1,4 +1,5 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { useEffect } from 'react';
 import Home from "./components/Home";
 import Signup from "./components/Signup";
 import Login from "./components/Login";
@@ -31,6 +32,14 @@ import DevOpsPage from "../src/pages/DevOps";
 import UIUXPage from "../src/pages/UIUX";
 
 const App = () => {
+
+  
+
+useEffect(() => {
+  window.scrollTo(0, 0); // Scroll to top when component mounts
+}, []); // Empty dependency array makes it run only once after mount
+
+
   return (
     <>
       <Router>
